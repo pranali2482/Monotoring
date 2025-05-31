@@ -17,7 +17,7 @@
 3. Provides PromQL for Querying: Prometheus uses PromQL (Prometheus Query Language) to query stored metrics.
 
 Prometheus uses the prometheus.yml file to know about: What metrics to collects, targets, timestamp to scrap metrics, configuring alerts etc.
-a. Installing Prometheus on a VM/EC2: You provide and manage the prometheus.yml file yourself.
+a. Installing Standalone Prometheus: You provide and manage the prometheus.yml file yourself.
 b. Installing Prometheus on Kubernetes using kube-prometheus-stack: Direct editing of prometheus.yml is not allowed,
 managed declaratively via Kubernetes resources like Servicemonitor, Podmonitor, Prometheusrule etc.
 The Operator watches for these resources and updates the Prometheus configuration automatically.
@@ -41,7 +41,8 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
 
-Kube-Prometheus Stack (Recommended): Includes: Prometheus + Grafana + Alertmanager + Node Exporter + Kube-State-Metrics
+Kube-Prometheus Stack (Recommended): Includes: Prometheus + Grafana + Alertmanager + Node Exporter + Kube-State-Metrics +
+Prometheus Operator(Manages Prometheus using CRDs (ServiceMonitor, PrometheusRule)).
 
 | Component     | Deployed As | Runs Where    | Role                         |
 | ------------- | ----------- | ------------- | ---------------------------- |
